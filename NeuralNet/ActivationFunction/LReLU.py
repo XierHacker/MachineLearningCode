@@ -1,13 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def relu(x):
+def lrelu(x,a):
     y=x.copy()
-    y[y<0]=0
+    for i in range(y.shape[0]):
+        if y[i]<0:
+            y[i]=a*y[i]
     return y
 
 x=np.linspace(start=-10,stop=10,num=100)
-y=relu(x)
+y=lrelu(x,0.25)
+print(x)
 print(y)
 plt.plot(x,y)
 plt.grid(True)
